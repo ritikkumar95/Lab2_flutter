@@ -1,160 +1,146 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'BROWSE CATEGORIES',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Not sure exactly which recipe you are looking for? Do a search or dive into our most popular categories',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+            // Row 1: Center-aligned text
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+            // Row 2: Left-aligned text
 
-  final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-   TextEditingController _passwordController= TextEditingController();
-    TextEditingController _usernameController= TextEditingController();
-   String imageSource= "images/question-mark.png";
-  @override
-  void initState() {
-    super.initState();
-    _passwordController = TextEditingController();
-    _usernameController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _passwordController.dispose();
-    _usernameController.dispose();
-    super.dispose();
-  }
-
-   @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-              TextField(controller: _usernameController,
-                decoration: InputDecoration(
-                  hintText: "Login",
-                  border:OutlineInputBorder(),
-
-                ),
-
-        ),// input login
-
-        TextField(controller: _passwordController,
-          decoration: InputDecoration(
-            hintText: "Password",
-            border:OutlineInputBorder(),
-
-          )
-        ) ,
-            // Pass
-            ElevatedButton(
-              onPressed: (
-
-                  ) {
-                setState(() {
-                  if ( _passwordController.value.text=="QWERTY123"){
-                    imageSource="images/idea.png";
-                  }
-
-                  else{
-                    imageSource="images/stop.png";
-                  }
-                });
-              }, //  <--- Lambda function
-             child: Text('Login'),
+            // Row 3: Images with text in the middle
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'By Meat',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      buildImageStack('Beef', 'images/beef.jpg', circleShape: true),
+                      buildImageStack('Chicken', 'images/chicken.jpg', circleShape: true),
+                      buildImageStack('Pork', 'images/pork.jpg', circleShape: true),
+                      buildImageStack('Seafood', 'images/seafood.jpg', circleShape: true),
+                    ],
+                  ),
+                ],
+              ),
             ),
 
-           Image.asset(
-             imageSource,
-             width:200,
-             height:200,
-           ),
+            // Row 4: Images with text at the bottom center
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'By Course',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      buildImageStack('Main dishes', 'images/maindishes.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Salad Recipes', 'images/saladrecipes.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Side Dishes', 'images/sidedishes.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Crockpot', 'images/crock.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            // Row 5: Images with text at the bottom center
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    'By Dessert',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      buildImageStack('Ice cream', 'images/ice.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Brownie', 'images/brownie.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Pies', 'images/pies.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                      buildImageStack('Cookies', 'images/cookies.jpg', textAlignment: Alignment.bottomCenter, circleShape: true),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  // Function to build image stack with text in the middle or at the bottom center
+  Widget buildImageStack(String text, String imagePath, {Alignment textAlignment = Alignment.center, bool circleShape = false}) {
+    return Stack(
+      alignment: textAlignment,
+      children: [
+        Container(
+          width: 100,
+          height: 100,
+          decoration: BoxDecoration(
+            shape: circleShape ? BoxShape.circle : BoxShape.rectangle,
+            image: DecorationImage(
+              image: AssetImage(imagePath),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.black54,
+          padding: EdgeInsets.all(8),
+          child: Text(
+            text,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
     );
   }
 }
