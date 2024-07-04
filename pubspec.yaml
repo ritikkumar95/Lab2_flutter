@@ -1,5 +1,5 @@
-name: lab2
-description: "lab2"
+name: login_page_lab2
+description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
+  sdk: '>=3.3.4 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -88,16 +88,3 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-  assets:
-    - images/beef.jpg
-    - images/brownie.jpg
-    - images/chicken.jpg
-    - images/cookies.jpg
-    - images/crock.jpg
-    - images/maindishes.jpg
-    - images/pies.jpg
-    - images/pork.jpg
-    - images/saladrecipes.jpg
-    - images/seafood.jpg
-    - images/sidedishes.jpg
-    - images/ice.jpg
